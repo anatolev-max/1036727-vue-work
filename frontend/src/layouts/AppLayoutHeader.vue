@@ -2,7 +2,7 @@
     <header class="header">
         <!-- logo -->
         <div class="header__logo">
-            <a href="#" class="logo">
+            <a class="logo" href="#">
                 <img
                     src="@/assets/img/logo.svg"
                     alt="VueWork logo"
@@ -14,15 +14,26 @@
 
         <!-- search -->
         <form action="#" class="header__search">
-            <input type="search" name="search" required placeholder="Поиск"/>
+            <input
+                type="search"
+                name="search"
+                placeholder="Поиск"
+                required
+            >
             <button type="submit">Найти</button>
         </form>
 
         <!-- new-task-button -->
-        <a href="#" class="header__create-task">Создать карточку</a>
+        <a
+            class="header__create-task"
+            href="#"
+        >Создать карточку</a>
 
         <!-- user-avatar -->
-        <a href="#" class="header__user">
+        <a
+            class="header__user"
+            href="#"
+        >
             <img
                 src="@/assets/img/admin.jpg"
                 alt="Администратор"
@@ -39,8 +50,9 @@
                     width="40"
                     height="40"
                     alt="Администратор"
-                />
+                >
                 <span>Администратор</span>
+
                 <a href="#" class="user-menu__link">Мой аккаунт</a>
                 <a href="#" class="user-menu__link">Выйти</a>
             </div>
@@ -48,7 +60,7 @@
     </header>
 </template>
 
-<script setup lang="ts">
+<script setup>
 </script>
 
 <style lang="scss" scoped>

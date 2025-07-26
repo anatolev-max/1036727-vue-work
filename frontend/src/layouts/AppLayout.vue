@@ -6,7 +6,9 @@
 </template>
 
 <script setup>
+
 import AppLayoutHeader from './AppLayoutHeader.vue';
+
 </script>
 
 <style lang="scss" scoped>
