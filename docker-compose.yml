@@ -1,7 +1,8 @@
-version: '3'
+name: vue-work
 
 services:
   db:
+    container_name: vue-work-db
     image: postgres
     environment:
       POSTGRES_HOST_AUTH_METHOD: 'trust'
@@ -10,6 +11,7 @@ services:
       - 8531:5432
 
   backend:
+    container_name: vue-work-backend
     build: ./backend
     command: npm start
     volumes:
@@ -20,6 +22,7 @@ services:
       - 8501:3000
 
   frontend:
+    container_name: vue-work-frontend
     build:
       context: ./frontend
 #    https://github: com/vitejs/vite/issues/2671#issuecomment-829535806:
