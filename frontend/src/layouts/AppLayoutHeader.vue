@@ -52,5 +52,9 @@
 <script setup lang="ts">
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+
+@import '@/assets/scss/ds-system/ds-system';
+@import '@/assets/scss/views/layout-header.scss';
+
 </style>
