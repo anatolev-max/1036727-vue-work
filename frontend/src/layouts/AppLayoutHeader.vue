@@ -1,7 +1,6 @@
-
 <template>
     <header class="header">
-        <!-- Логотип -->
+        <!-- logo -->
         <div class="header__logo">
             <a href="#" class="logo">
                 <img
@@ -13,16 +12,16 @@
             </a>
         </div>
 
-        <!-- Поиск -->
+        <!-- search -->
         <form action="#" class="header__search">
             <input type="search" name="search" required placeholder="Поиск"/>
             <button type="submit">Найти</button>
         </form>
 
-        <!-- Кнопка создания новой задачи -->
+        <!-- new-task-button -->
         <a href="#" class="header__create-task">Создать карточку</a>
 
-        <!-- Аватар пользователя -->
+        <!-- user-avatar -->
         <a href="#" class="header__user">
             <img
                 src="@/assets/img/admin.jpg"
@@ -32,13 +31,13 @@
             />
         </a>
 
-        <!-- Панель пользователя -->
+        <!-- user-panel -->
         <div class="header__menu">
             <div class="user-menu">
                 <img
                     src="@/assets/img/admin.jpg"
-                    width="56"
-                    height="56"
+                    width="40"
+                    height="40"
                     alt="Администратор"
                 />
                 <span>Администратор</span>
