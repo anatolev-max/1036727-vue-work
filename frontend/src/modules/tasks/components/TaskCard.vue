@@ -15,7 +15,7 @@
                             width="20"
                             height="20"
                             alt="Аватар пользователя"
-                        />
+                        >
                     </div>
                     {{ task.user.name }}
                 </div>
@@ -26,12 +26,12 @@
                       v-if="task.status"
                       class="task__status"
                       :class="`task__status--${task.status}`"
-                    />
+                    ></span>
                     <span
                         v-if="task.timeStatus"
                         class="task__status"
                         :class="`task__status--${task.timeStatus}`"
-                    />
+                    ></span>
                 </div>
 
                 <h5
@@ -53,8 +53,9 @@
 import TaskCardTags from './TaskCardTags.vue'
 import AppDrag      from '@/common/components/AppDrag.vue'
 import AppDrop      from '@/common/components/AppDrop.vue'
-import {getImage}   from '@/common/helpers'
+import {getImage}   from '@/common/helpers.js'
 
+// 1. props
 const props = defineProps({
     task: {
         type:     Object,
@@ -62,6 +63,7 @@ const props = defineProps({
     }
 })
 
+// 3. emits
 defineEmits(['drop']);
 </script>
 

@@ -6,9 +6,10 @@
     >
         <h2 class="column__name">
             <!-- Shows the column name -->
-            <span v-if="!state.isInputShowed">
-        {{ state.columnTitle }}
-      </span>
+            <span
+                v-if="!state.isInputShowed"
+            >{{ state.columnTitle }}</span>
+
             <!-- Shows input if the column is editable -->
             <input
                 v-else
@@ -56,6 +57,7 @@ import AppIcon                             from '@/common/components/AppIcon.vue
 import {getTargetColumnTasks, addActive}   from '@/common/helpers'
 import TaskCard                            from '@/modules/tasks/components/TaskCard.vue'
 
+// 1. props
 const props = defineProps({
     column: {
         type:     Object,
@@ -66,18 +68,22 @@ const props = defineProps({
         required: true
     }
 })
+
+// 2. data
 const columnTitle = ref(null);
 const state = reactive({
     isInputShowed: false,
     columnTitle:   props.column.title
 });
 
+// 3. emits
 const emits = defineEmits([
     'update',
     'delete',
     'updateTasks'
 ]);
 
+// 4. computed
 // Filter tasks that belong to a specific column
 const columnTasks = computed(() => {
     return props.tasks
@@ -85,7 +91,12 @@ const columnTasks = computed(() => {
         .sort((taskA, taskB) => taskA.sortOrder - taskB.sortOrder);
 })
 
-// Shows the input for editing the column and brings it into focus.
+// 5. methods
+/**
+ * Shows the input for editing the column and brings it into focus.
+ *
+ * @returns {Promise<void>}
+ */
 async function showInput() {
     state.isInputShowed = true
     // The nextTick function waits for the component to re-render.
@@ -94,6 +105,9 @@ async function showInput() {
     columnTitle.value.focus();
 }
 
+/**
+ * @returns undefined
+ */
 function updateInput() {
     state.isInputShowed = false;
 
@@ -108,7 +122,12 @@ function updateInput() {
     });
 }
 
-// Method for transferring tasks
+/**
+ * Method for transferring tasks
+ *
+ * @param active
+ * @param toTask
+ */
 function moveTask(active, toTask) {
     // Do not update if there are no changes
     if (toTask && active.id === toTask.id) {

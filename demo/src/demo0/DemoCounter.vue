@@ -7,10 +7,12 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {ref} from 'vue';
 
+// 2. data
 const count = ref(0);
 
+// 5. methods
 const decrement = () => {
     count.value = count.value - 1;
 }

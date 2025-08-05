@@ -3,6 +3,7 @@
 </template>
 
 <script setup>
+// 1. props
 defineProps({
     value: {
         type:     Number,

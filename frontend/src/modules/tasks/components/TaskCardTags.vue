@@ -13,6 +13,7 @@
 import {computed}               from 'vue'
 import {getTagsArrayFromString} from '@/common/helpers.js'
 
+// 1. props
 const props = defineProps({
     tags: {
         type:     String,
@@ -20,6 +21,7 @@ const props = defineProps({
     }
 })
 
+// 4. computed
 const tagsArray = computed(() => {
     return getTagsArrayFromString(props.tags);
 })

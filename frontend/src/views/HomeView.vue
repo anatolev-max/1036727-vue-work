@@ -21,9 +21,9 @@
                                 v-for="user in users"
                                 :key="user.id"
                                 class="user-filter__item"
-                                :class="{ active: filters.users.some(id => id === user.id) }"
+                                :class="{active: filters.users.some(id => id === user.id)}"
                                 :title="user.name"
-                                @click="$emit('applyFilters', { item: user.id, entity: 'users' })"
+                                @click="$emit('applyFilters', {item: user.id, entity: 'users'})"
                             >
                                 <a class="user-filter__button">
                                     <img
@@ -87,12 +87,13 @@
 <script setup>
 import {reactive} from 'vue'
 import {uniqueId} from 'lodash'
-import columns    from '../mocks/columns.json'
-import users      from '../mocks/users.json'
+import columns    from '@/mocks/columns.json'
+import users      from '@/mocks/users.json'
 import {STATUSES} from '@/common/constants.js'
 import {getImage} from '@/common/helpers.js'
 import DeskColumn from '@/modules/columns/components/DeskColumn.vue'
 
+// 1. props
 const props = defineProps({
     tasks: {
         type:     Array,
@@ -104,13 +105,16 @@ const props = defineProps({
     }
 });
 
+// 2. data
+const state = reactive({columns});
+
+// 3. emits
 defineEmits([
     'applyFilters',
     'updateTasks'
 ]);
 
-const state = reactive({columns});
-
+// 5. methods
 /**
  * @returns undefined
  */
