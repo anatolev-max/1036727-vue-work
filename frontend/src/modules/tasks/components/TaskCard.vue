@@ -64,7 +64,9 @@ const props = defineProps({
 })
 
 // 3. emits
-defineEmits(['drop']);
+defineEmits([
+    'drop'
+]);
 </script>
 
 <style lang="scss" scoped>

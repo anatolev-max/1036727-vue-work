@@ -13,7 +13,11 @@
         </div>
 
         <!-- search -->
-        <form action="#" class="header__search">
+        <form
+            class="header__search"
+            action="#"
+            @submit.prevent
+        >
             <input
                 type="search"
                 name="search"

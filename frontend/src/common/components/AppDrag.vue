@@ -12,16 +12,22 @@
 <script setup>
 import {DATA_TRANSFER_PAYLOAD, MOVE} from '../constants.js'
 
+// 1. props
 const props = defineProps({
     transferData: {
-        type: Object,
+        type:     Object,
         required: true
     }
 });
 
+// 5. methods
+/**
+ * @param dataTransfer
+ */
 function onDrag({dataTransfer}) {
     dataTransfer.effectAllowed = MOVE;
     dataTransfer.dropEffect = MOVE;
+
     dataTransfer.setData(
         DATA_TRANSFER_PAYLOAD,
         JSON.stringify(props.transferData)

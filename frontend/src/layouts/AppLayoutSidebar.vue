@@ -2,7 +2,7 @@
     <!-- Keeps track of which column a task is assigned to -->
     <app-drop
         class="backlog"
-        :class="{ 'backlog--hide': state.backlogIsHidden }"
+        :class="{'backlog--hide': state.backlogIsHidden}"
         @drop="moveTask"
     >
         <!-- Responsible for opening and closing the backlog -->
@@ -84,12 +84,13 @@ const sidebarTasks = computed(() => {
 
 // 5. methods
 /**
- * @param active
+ * @param activeTask
  * @param toTask
  */
-function moveTask (active, toTask) {
+function moveTask(activeTask, toTask) {
+    // TODO: why activeTask is task-data (must be event)?
     // Don't update the array if the task hasn't moved
-    if (toTask && active.id === toTask.id) {
+    if (toTask && activeTask.id === toTask.id) {
         return;
     }
 
@@ -98,7 +99,7 @@ function moveTask (active, toTask) {
     // Get tasks for the current column
     const targetColumnTasks = getTargetColumnTasks(toColumnId, props.tasks);
     const activeClone = {
-        ...active,
+        ...activeTask,
         columnId: toColumnId
     };
 
@@ -108,7 +109,7 @@ function moveTask (active, toTask) {
 
     // Sort tasks in a column
     resultTasks.forEach((task, index) => {
-        if (task.sortOrder !== index || task.id === active.id) {
+        if (task.sortOrder !== index || task.id === activeTask.id) {
             const newTask = {
                 ...task,
                 sortOrder: index

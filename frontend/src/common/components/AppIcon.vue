@@ -9,5 +9,7 @@
 </script>
 
 <style lang="scss" scoped>
+
 @import "@/assets/scss/components/app-icon.scss";
+
 </style>

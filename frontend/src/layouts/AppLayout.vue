@@ -25,7 +25,7 @@ const props = defineProps({
         type:     Object,
         required: true
     }
-})
+});
 
 // 3. emits
 defineEmits([

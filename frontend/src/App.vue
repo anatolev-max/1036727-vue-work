@@ -23,7 +23,7 @@ import {HomeView}           from '@/views';
 
 // 2. data
 const state = reactive({
-    tasks: tasks.map(task => normalizeTask(task)),
+    tasks:   tasks.map(task => normalizeTask(task)),
     filters: {
         search:   '',
         users:    [],
@@ -37,35 +37,36 @@ const state = reactive({
  */
 const filteredTasks = computed(() => {
     const filtersAreEmpty = Object.values(state.filters)
-        .every(value => !value.length)
+        .every(value => !value.length);
+
     if (filtersAreEmpty) {
         // Return all tasks if no filters are applied
-        return state.tasks
+        return state.tasks;
     }
 
     // Apply search filter
     const searchFilter = task => task.title
         .toLowerCase()
-        .includes(state.filters.search.toLowerCase().trim())
+        .includes(state.filters.search.toLowerCase().trim());
 
     // Apply filter by users
     const usersFilter = task => state.filters.users
-        .some(userId => userId === task.userId)
+        .some(userId => userId === task.userId);
 
     // Apply filter by statuses
     const statusesFilter = task => state.filters.statuses
-        .some(el => el === task.status || el === task.timeStatus)
+        .some(status => status === task.status || status === task.timeStatus)
 
     // Process tasks according to filters
     return state.tasks.filter(task => {
-        let result = {
-            search: searchFilter,
-            users: usersFilter,
+        const result = {
+            search:   searchFilter,
+            users:    usersFilter,
             statuses: statusesFilter
-        }
+        };
+
         return Object.entries(result)
-            .every(([key, callback]) =>
-                !state.filters[key].length || callback(task))
+            .every(([key, callback]) => !state.filters[key].length || callback(task));
     })
 })
 
@@ -81,10 +82,10 @@ const filteredTasks = computed(() => {
  */
 function updateTasks(tasksToUpdate) {
     tasksToUpdate.forEach(task => {
-        const index = state.tasks.findIndex(({ id }) => id === task.id)
+        const index = state.tasks.findIndex(({id}) => id === task.id);
 
         if (~index) {
-            state.tasks.splice(index, 1, task)
+            state.tasks.splice(index, 1, task);
         }
     })
 }
@@ -99,9 +100,11 @@ function applyFilters({item, entity}) {
     } else {
         const resultValues = [...state.filters[entity]];
         const itemIndex = resultValues.findIndex(el => el === item);
+
         ~itemIndex
             ? resultValues.splice(itemIndex, 1)
             : resultValues.push(item);
+
         state.filters[entity] = resultValues;
     }
 }

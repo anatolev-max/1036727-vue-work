@@ -21,16 +21,16 @@
                                 v-for="user in users"
                                 :key="user.id"
                                 class="user-filter__item"
-                                :class="{active: filters.users.some(id => id === user.id)}"
+                                :class="{active: filters.users.some(userId => userId === user.id)}"
                                 :title="user.name"
                                 @click="$emit('applyFilters', {item: user.id, entity: 'users'})"
                             >
                                 <a class="user-filter__button">
                                     <img
                                         :src="getImage(user.avatar)"
-                                        alt="Аватар юзера"
                                         width="24"
                                         height="24"
+                                        alt="User avatar"
                                     />
                                 </a>
                             </li>
@@ -41,10 +41,10 @@
                         <!-- List of statuses -->
                         <ul class="meta-filter">
                             <li
-                                v-for="({ value, label }) in STATUSES"
+                                v-for="({value, label}) in STATUSES"
                                 :key="value"
                                 class="meta-filter__item"
-                                :class="{ active: filters.statuses.some(s => s === value) }"
+                                :class="{ active: filters.statuses.some(status => status === value) }"
                                 @click="$emit('applyFilters', {item: value, entity: 'statuses'})"
                             >
                                 <a
@@ -87,10 +87,10 @@
 <script setup>
 import {reactive} from 'vue'
 import {uniqueId} from 'lodash'
-import columns    from '@/mocks/columns.json'
-import users      from '@/mocks/users.json'
 import {STATUSES} from '@/common/constants.js'
 import {getImage} from '@/common/helpers.js'
+import columns    from '@/mocks/columns.json'
+import users      from '@/mocks/users.json'
 import DeskColumn from '@/modules/columns/components/DeskColumn.vue'
 
 // 1. props
@@ -120,7 +120,7 @@ defineEmits([
 /**
  * @returns undefined
  */
-function addColumn () {
+function addColumn() {
     state.columns.push({
         id:    uniqueId('column_'),
         title: 'Новый столбец'
@@ -128,20 +128,20 @@ function addColumn () {
 }
 
 /**
- * @param id
+ * @param columnId
  */
-function deleteColumn (id) {
-    state.columns = state.columns.filter(column => column.id !== id);
+function deleteColumn(columnId) {
+    state.columns = state.columns.filter(column => column.id !== columnId);
 }
 
 /**
  * @param column
  */
-function updateColumn (column) {
+function updateColumn(column) {
     const index = state.columns.findIndex(({id}) => id === column.id);
 
     if (~index) {
-        state.columns.splice(index, 1, column)
+        state.columns.splice(index, 1, column);
     }
 }
 </script>

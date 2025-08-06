@@ -11,13 +11,22 @@
 <script setup>
 import {DATA_TRANSFER_PAYLOAD} from '../constants.js'
 
-const emit = defineEmits(['drop']);
+// 3. emits
+const emit = defineEmits([
+    'drop'
+]);
 
-function onDrop({ dataTransfer }) {
+// 5. methods
+/**
+ * @param dataTransfer
+ */
+function onDrop({dataTransfer}) {
     if (!dataTransfer) {
         return;
     }
+
     const payload = dataTransfer.getData(DATA_TRANSFER_PAYLOAD);
+
     if (payload) {
         const transferData = JSON.parse(dataTransfer.getData(DATA_TRANSFER_PAYLOAD));
         emit('drop', transferData);
