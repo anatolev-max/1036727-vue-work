@@ -84,7 +84,11 @@ const emits = defineEmits([
 ]);
 
 // 4. computed
-// Filter tasks that belong to a specific column
+/**
+ * Filter tasks that belong to a specific column
+ *
+ * @type {ComputedRef<any[]>}
+ */
 const columnTasks = computed(() => {
     return props.tasks
         .filter(task => task.columnId === props.column.id)

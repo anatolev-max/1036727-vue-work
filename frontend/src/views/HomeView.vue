@@ -106,7 +106,9 @@ const props = defineProps({
 });
 
 // 2. data
-const state = reactive({columns});
+const state = reactive({
+    columns,
+});
 
 // 3. emits
 defineEmits([
